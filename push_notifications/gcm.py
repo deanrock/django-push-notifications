@@ -93,7 +93,7 @@ def _gcm_send_json(registration_ids, data, **kwargs):
 
 	data = json.dumps(values, separators=(",", ":"), sort_keys=True).encode("utf-8")  # keys sorted for tests
 
-	result = json.loads(_gcm_send(data, "application/json"))
+	result = json.loads(_gcm_send(data, "application/json").decode("utf-8"))
 	if result["failure"]:
 		raise GCMError(result)
 	return result
